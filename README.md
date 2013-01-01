@@ -12,7 +12,7 @@
 
 FuelPHP is a fast, lightweight PHP 5.3 framework. In an age where frameworks are a dime a dozen, We believe that FuelPHP will stand out in the crowd.  It will do this by combining all the things you love about the great frameworks out there, while getting rid of the bad.
 
-## Description
+## More information
 
 For more detailed information, see the [development wiki](https://github.com/fuelphp/fuelphp/wiki).
 

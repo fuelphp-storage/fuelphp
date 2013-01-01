@@ -5,17 +5,12 @@
     "keywords": ["framework"],
     "homepage": "http://fuelphp.com",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Harro Verton",
-        },
-        {
-            "name": "Frank de Jonge",
-        },
-        {
-            "name": "FuelPHP Community",
-        }
-    ],
+	"authors": [
+		{
+			"name": "FuelPHP Development Team",
+			"email": "team@fuelphp.com"
+		}
+	],
 	"require": {
 		"php": ">=5.3.3"
 	},

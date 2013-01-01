@@ -8,6 +8,8 @@
 * [Development API browser](http://dev-api.fuelphp.com)
 * [Forums](http://fuelphp.com/forums) for comments, discussion and community support
 
+[![Build Status](https://travis-ci.org/fuelphp/fuelphp.png?branch=develop)](https://travis-ci.org/fuelphp/fuelphp)
+
 ## Description
 
 FuelPHP is a fast, lightweight PHP 5.3 framework. In an age where frameworks are a dime a dozen, We believe that FuelPHP will stand out in the crowd.  It will do this by combining all the things you love about the great frameworks out there, while getting rid of the bad.

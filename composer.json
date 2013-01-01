@@ -1,5 +1,21 @@
 {
 	"name": "fuelphp/fuelphp",
+    "type": "library",
+    "description": "The FuelPHP framework",
+    "keywords": ["framework"],
+    "homepage": "http://fuelphp.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Harro Verton",
+        },
+        {
+            "name": "Frank de Jonge",
+        },
+        {
+            "name": "FuelPHP Community",
+        }
+    ],
 	"require": {
 		"php": ">=5.3.3"
 	},

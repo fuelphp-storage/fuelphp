@@ -1,5 +1,7 @@
 #FuelPHP
 
+[![Build Status](https://travis-ci.org/fuelphp/fuelphp.png?branch=master)](https://travis-ci.org/fuelphp/fuelphp)
+
 * Version: 2.0
 * [Website](http://fuelphp.com/)
 * [Release Documentation](http://docs.fuelphp.com)

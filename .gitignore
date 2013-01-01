@@ -13,3 +13,4 @@ nbproject
 vendor
 composer.phar
 application/*/
+composer.lock

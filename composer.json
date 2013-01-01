@@ -12,7 +12,10 @@
 		}
 	],
 	"require": {
-		"php": ">=5.3.3"
+		"php": ">=5.3.3",
+		"fuelphp/alias": "dev-master",
+		"fuelphp/dependency-injection": "dev-master",
+		"fuelphp/event": "dev-master"
 	},
 	"minimum-stability": "dev"
 }

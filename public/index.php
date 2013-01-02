@@ -19,5 +19,5 @@ $dic->register('env', 'FuelPHP\Foundation\Environment', function($entry) {
 // create the environment instance, configure it, and start the application...
 $dic->resolve('env', null, $dic)
 	->setConfig(array())
-	->setApp('../application/application')
+	->setApp('../application/demoapp')
 	->execute();

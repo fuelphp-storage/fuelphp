@@ -13,13 +13,11 @@
 	],
 	"require": {
 		"php": ">=5.3.3",
+		"fuelphp/demoapp": "dev-develop",
 		"fuelphp/foundation": "dev-develop",
 		"fuelphp/alias": "dev-master",
 		"fuelphp/dependency-injection": "dev-master",
 		"fuelphp/event": "dev-master"
-	},
-	"suggest": {
-		"fuelphp/demoapp": "dev-develop",
 	},
 	"minimum-stability": "dev"
 }

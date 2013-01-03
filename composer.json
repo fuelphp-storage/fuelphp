@@ -13,7 +13,7 @@
 	],
 	"require": {
 		"php": ">=5.3.3",
-		"fuelphp/demoapp": "dev-develop",
+		"fuelphp/demo-package": "dev-develop",
 		"fuelphp/foundation": "dev-develop",
 		"fuelphp/alias": "dev-master",
 		"fuelphp/dependency-injection": "dev-master",

@@ -12,12 +12,13 @@
 		}
     ],
     "require": {
-		"php": ">=5.3.3",
-		"fuelphp/demo-package": "dev-develop",
-		"fuelphp/foundation": "dev-develop",
+		"php": ">=5.4",
+		"filp/whoops": "dev-master",
+		"fuelphp/foundation": "dev-master",
+		"fuelphp/common": "dev-master",
+		"fuelphp/dependency": "dev-master",
 		"fuelphp/alias": "dev-master",
-		"fuelphp/dependency-injection": "dev-master",
-		"fuelphp/event": "dev-master"
+		"fuelphp/config": "dev-master"
     },
     "minimum-stability": "dev"
 }

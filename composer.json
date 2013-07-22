@@ -18,7 +18,8 @@
 		"fuelphp/common": "dev-master",
 		"fuelphp/dependency": "dev-master",
 		"fuelphp/alias": "dev-master",
-		"fuelphp/config": "dev-master"
+		"fuelphp/config": "dev-master",
+		"fuelphp/demo-application" : "dev-master"
     },
     "minimum-stability": "dev"
 }

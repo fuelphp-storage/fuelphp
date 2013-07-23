@@ -59,7 +59,7 @@ $autoloader = require VENDORPATH.'autoload.php';
 );
 
 /**
- * and a test one...
+ * and a test one with a custom path and a namespace...
  */
 \Fuel::setApp(
 	array('test' => APPSPATH.'demo'),

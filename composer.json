@@ -15,9 +15,6 @@
 		"php": ">=5.4",
 		"fuelphp/common": "dev-master",
 		"fuelphp/foundation": "dev-master",
-		"fuelphp/dependency": "dev-master",
-		"fuelphp/alias": "dev-master",
-		"fuelphp/config": "dev-master",
 		"fuelphp/display": "dev-master",
 		"fuelphp/demo-application" : "dev-master"
     },

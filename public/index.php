@@ -42,13 +42,19 @@ define('VENDORPATH', realpath(__DIR__.'/../vendor/').DS);
 /**
  * Include the Composer autoloader
  */
-require VENDORPATH.'autoload.php';
+$autoloader = require VENDORPATH.'autoload.php';
+
+/**
+ * And allow Fuel to use it
+ */
+\Fuel::setLoader($autoloader);
 
 /**
  * Setup the demo application environment...
  */
 \Fuel::setApp(
 	'demo',
+	'',
 	isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : 'development'
 );
 
@@ -57,25 +63,15 @@ require VENDORPATH.'autoload.php';
  */
 \Fuel::setApp(
 	array('test' => APPSPATH.'demo'),
+	'Test\Namespace',
 	'production'
 );
 
 /**
  * Load the demo application and fire the main request
  */
-$response = \Fuel::getApp('demo');
-
-var_dump($response);
-
-die('stop');
-
-
-/**
- * and get us some response
- */
-
-$response = $env->loadApplication()
-	->request($env->input->getPathInfo())
+$response = \Fuel::getApp('demo')
+	->request()
 	->execute()
 	->getResponse()
 	->sendHeaders()
@@ -84,9 +80,9 @@ $response = $env->loadApplication()
 /**
  * Compile profiling data
  */
-$execTime = round($env->profiler->getTimeElapsed(), 5);
-$memUsage = round($env->profiler->getMemUsage() / 1000000, 4);
-$memPeakUsage = round($env->profiler->getMemUsage(true) / 1000000, 4);
+$execTime = round(microtime(true)-FUEL_START_TIME, 5).'sec';
+$memUsage = round((memory_get_usage()-FUEL_START_MEM)/1024/1024, 4).'Mb';
+$memPeakUsage = round((memory_get_peak_usage()-FUEL_START_MEM)/1024/1024, 4).'Mb';
 
 /**
  * Output the response body and replace the profiling values

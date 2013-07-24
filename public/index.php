@@ -80,9 +80,9 @@ $response = $demoApp
 /**
  * Compile profiling data
  */
-$execTime = round(microtime(true)-FUEL_START_TIME, 5).'sec';
-$memUsage = round((memory_get_usage()-FUEL_START_MEM)/1024/1024, 4).'Mb';
-$memPeakUsage = round((memory_get_peak_usage()-FUEL_START_MEM)/1024/1024, 4).'Mb';
+$execTime = round(microtime(true)-FUEL_START_TIME, 5);
+$memUsage = round((memory_get_usage()-FUEL_START_MEM)/1024/1024, 4);
+$memPeakUsage = round((memory_get_peak_usage()-FUEL_START_MEM)/1024/1024, 4);
 
 /**
  * Output the response body and replace the profiling values

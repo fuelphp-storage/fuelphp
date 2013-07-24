@@ -13,9 +13,7 @@
     ],
     "require": {
 		"php": ">=5.4",
-		"fuelphp/common": "dev-master",
 		"fuelphp/foundation": "dev-master",
-		"fuelphp/display": "dev-master",
 		"fuelphp/demo-application" : "dev-master"
     },
     "minimum-stability": "dev"

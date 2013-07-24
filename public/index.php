@@ -71,7 +71,7 @@ $testApp = \Fuel::setApp(array(
  * Load the demo application and fire the main request
  */
 $response = $demoApp
-	->request()
+	->getRequest()
 	->execute()
 	->getResponse()
 	->sendHeaders()

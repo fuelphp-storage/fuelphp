@@ -45,15 +45,9 @@ define('VENDORPATH', realpath(__DIR__.'/../vendor/').DS);
 $autoloader = require VENDORPATH.'autoload.php';
 
 /**
- * Bootstrap the framework
+ * Forge the demo application environment...
  */
-\Fuel::bootstrap($autoloader);
-
-/**
- * Setup the demo application environment...
- */
-$demoApp = \Fuel::setApp(array(
-	'name' => 'demo',
+Application::forge('demo', array(
 	'namespace' => null,
 	'environment' => isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : 'development'
 ));
@@ -61,16 +55,16 @@ $demoApp = \Fuel::setApp(array(
 /**
  * and a test one with a custom path and a namespace...
  */
-$testApp = \Fuel::setApp(array(
-	'name' => array('test' => APPSPATH.'demo'),
+Application::forge('test', array(
+	'path' => APPSPATH.'demo',
 	'namespace' => 'Test\Namespace',
 	'environment' => 'production'
 ));
 
 /**
- * Load the demo application and fire the main request
+ * Get the demo application and fire the main request on it
  */
-$response = $demoApp
+$response = Application::get('demo')
 	->getRequest()
 	->execute()
 	->getResponse()

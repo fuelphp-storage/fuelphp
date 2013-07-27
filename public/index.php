@@ -20,27 +20,22 @@ defined('FUEL_START_TIME') or define('FUEL_START_TIME', microtime(true));
 defined('FUEL_START_MEM') or define('FUEL_START_MEM', memory_get_usage());
 
 /**
- * shortcut for directory separator
+ * Application document root
  */
-define('DS', DIRECTORY_SEPARATOR);
-
-/**
- * application document root
- */
-define('DOCROOT', __DIR__.DS);
+define('DOCROOT', __DIR__.DIRECTORY_SEPARATOR);
 
 /**
  * Path to the applications directory.
  */
-define('APPSPATH', realpath(__DIR__.'/../apps/').DS);
+define('APPSPATH', realpath(__DIR__.'/../apps/').DIRECTORY_SEPARATOR);
 
 /**
  * Path to the vendor directory.
  */
-define('VENDORPATH', realpath(__DIR__.'/../vendor/').DS);
+define('VENDORPATH', realpath(__DIR__.'/../vendor/').DIRECTORY_SEPARATOR);
 
 /**
- * Include the Composer autoloader
+ * Start the framework
  */
 $autoloader = require VENDORPATH.'autoload.php';
 

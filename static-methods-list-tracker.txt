@@ -9,6 +9,7 @@ Legend:
 	[2.0]           This method is in 2.0 as-is
 	[2.0 newName]   This method is in 2.0, but with a new name
 	[2.0 helper]    This method is in 2.0, as a helper function, not as a class method
+	[2.0 relocated] This method is in 2.0, but in a different class
 	[2.0 proto]     This method is in 2.0, but with a different prototype
 You can combine the last ones, in case they all changed: [2.0 newName helper proto]
 
@@ -110,7 +111,7 @@ Cli:
 	[TODO] - public static function wait($seconds = 0, $countdown = false)
  	[TODO] - public static function is_windows()
 	[TODO] - public static function new_line($num = 1)
-    [TODO] - public static function clear_screen()
+	[TODO] - public static function clear_screen()
 	[TODO] - public static function color($text, $foreground, $background = null)
 	[TODO] - public static function spawn($call, $output = '/dev/null')
 
@@ -323,21 +324,21 @@ Image:
 	[TODO] - public static function reload()
 
 Inflector:
-	[TODO] - public static function ordinalize($number)
-	[TODO] - public static function pluralize($word, $count = 0)
-	[TODO] - public static function singularize($word)
-	[TODO] - public static function camelize($underscored_word)
-	[TODO] - public static function underscore($camel_cased_word)
-	[TODO] - public static function ascii($str, $allow_non_ascii = false)
-	[TODO] - public static function friendly_title($str, $sep = '-', $lowercase = false, $allow_non_ascii = false)
-	[TODO] - public static function humanize($str, $sep = '_', $lowercase = true)
-	[TODO] - public static function demodulize($class_name_in_module)
-	[TODO] - public static function denamespace($class_name)
-	[TODO] - public static function get_namespace($class_name)
-	[TODO] - public static function tableize($class_name)
-	[TODO] - public static function words_to_upper($class, $sep = '_')
-	[TODO] - public static function classify($name, $force_singular = true)
-	[TODO] - public static function foreign_key($class_name, $u
+	[2.0] - public static function ordinalize($number)
+	[2.0] - public static function pluralize($word, $count = 0)
+	[2.0] - public static function singularize($word)
+	[2.0] - public static function camelize($underscored_word)
+	[2.0] - public static function underscore($camel_cased_word)
+	[2.0] - public static function ascii($str, $allow_non_ascii = false)
+	[2.0 friendlyTitle] - public static function friendly_title($str, $sep = '-', $lowercase = false, $allow_non_ascii = false)
+	[2.0] - public static function humanize($str, $sep = '_', $lowercase = true)
+	[2.0] - public static function demodulize($class_name_in_module)
+	[2.0] - public static function denamespace($class_name)
+	[2.0 getNamespace] - public static function get_namespace($class_name)
+	[2.0] - public static function tableize($class_name)
+	[2.0 wordsToUpper] - public static function words_to_upper($class, $sep = '_')
+	[2.0] - public static function classify($name, $force_singular = true)
+	[2.0 foreignKey] - public static function foreign_key($class_name, $u
 
 Input:
 	[TODO] - public static function json($index = null, $default = null)
@@ -439,7 +440,7 @@ Request:
 	[TODO] - public static function reset_request()
 
 Response:
-	[TODO] - public static function forge($body = null, $status = 200, array $headers = array())
+	[2.0] - public static function forge($body = null, $status = 200, array $headers = array())
 	[TODO] - public static function redirect($url = '', $method = 'location', $code = 302)
 	[TODO] - public static function redirect_back($url = '', $method = 'location', $code = 302)
 
@@ -450,11 +451,11 @@ Router:
 	[TODO] - public static function process(\Request $request, $route = true)
 
 Security:
-	[TODO] - public static function clean_uri($uri, $strict = false)
+	[2.0 CleanUri] - public static function clean_uri($uri, $strict = false)
 	[TODO] - public static function clean_input()
-	[TODO] - public static function clean($var, $filters = null, $type = 'security.input_filter')
+	[2.0] - public static function clean($var, $filters = null, $type = 'security.input_filter')
 	[TODO] - public static function xss_clean($value)
-	[TODO] - public static function strip_tags($value)
+	[2.0 stripTags] - public static function strip_tags($value)
 	[TODO] - public static function htmlentities($value, $flags = null, $encoding = null, $double_encode = null)
 	[TODO] - public static function check_token($value = null)
 	[TODO] - public static function fetch_token()
@@ -535,8 +536,10 @@ Validation:
 
 View:
 	[2.0] - public static function forge($file = null, $data = null, $auto_filter = null)
-	[TODO] - public static function set_global($key, $value = null, $filter = null)
-	[TODO] - public static function bind_global($key, &$value, $filter = null)
+	[2.0 relocated] - public static function set_global($key, $value = null, $filter = null)
+		-> implemented as View::getInstance()->set()
+	[2.0 relocated] - public static function bind_global($key, &$value, $filter = null)
+		-> implemented as View::getInstance()->bind()
 
 ViewModel (class is renamed to Presenter in 2.0!):
-	[TODO] - public static function forge($viewmodel, $method = 'view', $auto_filter = null, $view = null)
+	[2.0 relocated] - public static function forge($viewmodel, $method = 'view', $auto_filter = null, $view = null)

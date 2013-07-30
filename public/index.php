@@ -61,10 +61,14 @@ Application::forge('test', array(
  */
 $response = Application::get('demo')
 	->getRequest()
-	->execute()
+	->execute();
+
+/**
+ * Get the response, and set the response headers out
+ */
+$response = $response
 	->getResponse()
-	->sendHeaders()
-	->getContent();
+	->sendHeaders();
 
 /**
  * Compile profiling data

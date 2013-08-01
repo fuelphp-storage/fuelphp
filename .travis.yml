@@ -11,4 +11,4 @@ before_script:
 script: phpunit --coverage-text
 
 notifications:
-  irc: "irc.freenode.org#fuelphp"
+  irc: "irc.freenode.org#fuelphp-status"

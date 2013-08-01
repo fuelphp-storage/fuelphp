@@ -5,12 +5,12 @@
 ================================================================================
 
 Legend:
-	[TODO]          This method has not been looked at
-	[2.0]           This method is in 2.0 as-is
-	[2.0 newName]   This method is in 2.0, but with a new name
-	[2.0 helper]    This method is in 2.0, as a helper function, not as a class method
-	[2.0 relocated] This method is in 2.0, but in a different class
-	[2.0 proto]     This method is in 2.0, but with a different prototype
+	[TODO]                                This method has not been looked at
+	[2.0]                                 This method is in 2.0 as-is
+	[2.0 relocated New::call/New->call()] This method is in 2.0, but in a different class/method
+	[2.0 newName]                         This method is in 2.0, but with a new name
+	[2.0 helper]                          This method is in 2.0, as a helper function, not as a class method
+	[2.0 proto]                           This method is in 2.0, but with a different prototype
 You can combine the last ones, in case they all changed: [2.0 newName helper proto]
 
 --------------------------------------------------------------------------------
@@ -81,12 +81,12 @@ Asset:
 	[TODO] - public static function find_file($file, $type, $folder = '')
 
 Autoloader:
-	[TODO] - public static function add_namespace($namespace, $path, $psr = false)
-	[TODO] - public static function add_namespaces(array $namespaces, $prepend = false)
+	[2.0 proto relocated Composer::add] - public static function add_namespace($namespace, $path, $psr = false)
+	[2.0 proto relocated Composer::addClassMap] - public static function add_namespaces(array $namespaces, $prepend = false)
 	[TODO] - public static function namespace_path($namespace)
 	[TODO] - public static function add_class($class, $path)
 	[TODO] - public static function add_classes($classes)
-	[TODO] - public static function alias_to_namespace($class, $namespace = '')
+	[2.0 proto relocated Alias::alias] - public static function alias_to_namespace($class, $namespace = '')
 	[TODO] - public static function register()
 	[TODO] - public static function add_core_namespace($namespace, $prefix = true)
 	[TODO] - public static function load($class)
@@ -215,10 +215,9 @@ Error:
 	[TODO] - public static function show_production_error(\Exception $e)
 
 Event:
-	[TODO] - public static function forge(array $events = array())
-	[TODO] - public static function instance($name = 'fuelphp', array $events = array())
+	[2.0 proto] - public static function forge(array $events = array())
+	[2.0 proto] - public static function instance($name = 'fuelphp', array $events = array())
 	[TODO] - public static function shutdown()
-	[TODO] - public static function __callStatic($func, $args)
 
 Fieldset:
 	[TODO] - public static function forge($name = 'default', array $config = array())
@@ -251,9 +250,9 @@ File:
 	[TODO] - public static function download($path, $name = null, $mime = null, $area = null)
 
 Finder:
-	[TODO] - public static function search($dir, $file, $ext = '.php', $multiple = false, $cache = true)
+	[2.0] - public static function search($dir, $file, $ext = '.php', $multiple = false, $cache = true)
 	[TODO] - public static function instance()
-	[TODO] - public static function forge($paths = array())
+	[2.0 proto] - public static function forge($paths = array())
 
 Form:
 	[TODO] - public static function forge($fieldset = 'default', array $config = array())
@@ -278,7 +277,7 @@ Form:
 	[TODO] - public static function prep_value($value)
 
 Format:
-	[TODO] - public static function forge($data = null, $from_type = null)
+	[2.0] - public static function forge($data = null, $from_type = null)
 
 Ftp:
 	[TODO] - public static function forge($config = 'default', $connect = true)
@@ -372,12 +371,12 @@ Lang:
 	[TODO] - public static function delete($item, $group = null, $language = null)
 
 Log:
-	[TODO] - public static function instance()
-	[TODO] - public static function info($msg, $method = null)
-	[TODO] - public static function debug($msg, $method = null)
-	[TODO] - public static function warning($msg, $method = null)
-	[TODO] - public static function error($msg, $method = null)
-	[TODO] - public static function write($level, $msg, $method = null)
+	[2.0 getInstance] - public static function instance()
+	[2.0] - public static function info($msg, $method = null)
+	[2.0] - public static function debug($msg, $method = null)
+	[2.0] - public static function warning($msg, $method = null)
+	[2.0] - public static function error($msg, $method = null)
+	[2.0 addRecord] - public static function write($level, $msg, $method = null)
 
 Markdown:
 	[TODO] - public static function parse($text)
@@ -536,10 +535,8 @@ Validation:
 
 View:
 	[2.0] - public static function forge($file = null, $data = null, $auto_filter = null)
-	[2.0 relocated] - public static function set_global($key, $value = null, $filter = null)
-		-> implemented as View::getInstance()->set()
-	[2.0 relocated] - public static function bind_global($key, &$value, $filter = null)
-		-> implemented as View::getInstance()->bind()
+	[2.0 setGlobal] - public static function set_global($key, $value = null, $filter = null)
+	[2.0 bindGlobal] - public static function bind_global($key, &$value, $filter = null)
 
 ViewModel (class is renamed to Presenter in 2.0!):
 	[2.0 relocated] - public static function forge($viewmodel, $method = 'view', $auto_filter = null, $view = null)

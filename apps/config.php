@@ -60,11 +60,12 @@ return array(
 	'ob_callback'  => null,
 
 	/**
-	 * DateTime settings
+	 * default_timezone - optional, if you want to change the server's default timezone
 	 *
-	 * server_gmt_offset	in seconds the server offset from gmt timestamp when time() is used
-	 * default_timezone		optional, if you want to change the server's default timezone
+	 * You ONLY need this if your server is set to the correct timezone, given the servers time.
+	 *
+	 * For example if the current server time is your local time, but the timezone the server
+	 * is set too is not your local timezone, but for example UTC.
 	 */
-	'server_gmt_offset'  => 0,
 	'default_timezone'   => null,
 );

@@ -132,13 +132,13 @@ Crypt:
 	[TODO] - public static function decode($value, $key = false)
 
 Date:
-	[TODO] - public static function forge($timestamp = null, $timezone = null)
-	[TODO] - public static function time($timezone = null)
-	[TODO] - public static function display_timezone($timezone = null)
-	[TODO] - public static function create_from_string($input, $pattern_key = 'local')
-	[TODO] - public static function range_to_array($start, $end, $interval = '+1 Day')
-	[TODO] - public static function days_in_month($month, $year = null)
-	[TODO] - public static function time_ago($timestamp, $from_timestamp = null, $unit = null)
+	[2.0] - public static function forge($timestamp = null, $timezone = null)
+	[2.0] - public static function time($timezone = null)
+	[2.0 defaultTimezone] - public static function display_timezone($timezone = null)
+	[2.0 createFromFormat proto] - public static function create_from_string($input, $pattern_key = 'local')
+	[2.0 DateRange class] - public static function range_to_array($start, $end, $interval = '+1 Day')
+	[2.0 daysInMonth] - public static function days_in_month($month, $year = null)
+	[2.0 timeAgo] - public static function time_ago($timestamp, $from_timestamp = null, $unit = null)
 
 DB:
 	[TODO] - public static function query($sql, $type = null)

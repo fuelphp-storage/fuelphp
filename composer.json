@@ -16,6 +16,9 @@
 		"fuelphp/foundation": "dev-master",
 		"fuelphp/demo-application" : "dev-master"
     },
+    "suggest" : {
+		"raveren/kint": "Provides much improved var_dump() and debug_backtrace() functionality"
+    },
     "minimum-stability": "dev"
 }
 

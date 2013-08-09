@@ -123,9 +123,9 @@ Config:
 	[2.0] - public static function delete($item)
 
 Cookie:
-	[TODO] - public static function get($name = null, $default = null)
-	[TODO] - public static function set($name, $value, $expiration = null, $path = null, $domain = null, $secure = null, $http_only = null)
-	[TODO] - public static function delete($name, $path = null, $domain = null, $secure = null, $http_only = null)
+	[2.0] - public static function get($name = null, $default = null)
+	[2.0] - public static function set($name, $value, $expiration = null, $path = null, $domain = null, $secure = null, $http_only = null)
+	[2.0] - public static function delete($name, $path = null, $domain = null, $secure = null, $http_only = null)
 
 Crypt:
 	[TODO] - public static function encode($value, $key = false)

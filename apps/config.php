@@ -29,7 +29,7 @@ return array(
 	 *
 	 * Set this to null to have it automatically detected.
 	 */
-	'baseUrl'  => null,
+	'baseUrl' => null,
 
 	/**
 	 * urlSuffix - Any suffix that needs to be added to
@@ -40,7 +40,7 @@ return array(
 	 *
 	 * Set this to an empty string if no suffix is used
 	 */
-	'urlSuffix'  => '',
+	'urlSuffix' => '',
 
 	/**
 	 * indexFile - The name of the main bootstrap file.
@@ -52,12 +52,17 @@ return array(
 	/**
 	 * profiling - Whether or not the Profiler is enabled
 	 */
-	'profiling'  => false,
+	'profiling' => false,
 
 	/**
 	 * Callback to use with ob_start(), set this to 'ob_gzhandler' for gzip encoding of output
 	 */
-	'ob_callback'  => null,
+	'ob_callback' => null,
+
+	/**
+	 * locale - optional, if you want to change the server's locale, set it to null to use the server default
+	 */
+	'locale' => null,
 
 	/**
 	 * default_timezone - optional, if you want to change the server's default timezone

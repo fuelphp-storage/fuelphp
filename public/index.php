@@ -48,13 +48,11 @@ Application::forge('demo', array(
 ));
 
 /**
- * and a test one with a custom path and a namespace...
+ * Define some test modules
  */
-Application::forge('test', array(
-	'path' => APPSPATH.'demo',
-	'namespace' => 'Test\Namespace',
-	'environment' => 'production'
-));
+Application::get('demo')
+	->addModule('moda', 'Moda', Application::get('demo')->getPath().'modules'.DS.'moda', true)
+	->addModule('modb', 'Modb', Application::get('demo')->getPath().'modules'.DS.'modb', false);
 
 /**
  * Get the demo application and fire the main request on it

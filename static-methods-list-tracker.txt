@@ -363,12 +363,12 @@ Input:
 	[TODO] - public static function headers($index = null, $default = null)
 
 Lang:
-	[TODO] - public static function get_lang()
-	[TODO] - public static function load($file, $group = null, $language = null, $overwrite = false, $reload = false)
-	[TODO] - public static function save($file, $lang, $language = null)
-	[TODO] - public static function get($line, array $params = array(), $default = null, $language = null)
-	[TODO] - public static function set($line, $value, $group = null, $language = null)
-	[TODO] - public static function delete($item, $group = null, $language = null)
+	[2.0 getActive] - public static function get_lang()
+	[2.0 proto] - public static function load($file, $group = null, $language = null, $overwrite = false, $reload = false)
+	[2.0 proto] - public static function save($file, $lang, $language = null)
+	[2.0 proto] - public static function get($line, array $params = array(), $default = null, $language = null)
+	[2.0 proto] - public static function set($line, $value, $group = null, $language = null)
+	[2.0 proto] - public static function delete($item, $group = null, $language = null)
 
 Log:
 	[2.0 getInstance] - public static function instance()

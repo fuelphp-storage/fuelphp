@@ -50,9 +50,17 @@ Application::forge('demo', array(
 /**
  * Define some test modules
  */
+
+// add all modules at ones. This makes them all routable!
+Application::get('demo')
+	->addModulePath(Application::get('demo')->getPath().'modules');
+
+/*
+// add modules individually, which gives you more control over their definition
 Application::get('demo')
 	->addModule('moda', 'Moda', Application::get('demo')->getPath().'modules'.DS.'moda', true)
 	->addModule('modb', 'Modb', Application::get('demo')->getPath().'modules'.DS.'modb', false);
+*/
 
 /**
  * Get the demo application and fire the main request on it

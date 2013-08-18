@@ -42,7 +42,7 @@ $autoloader = require VENDORPATH.'autoload.php';
 /**
  * Forge the demo application environment...
  */
-Application::forge('demo', array(
+$app = Application::forge('demo', array(
 	'namespace' => null,
 	'environment' => isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : 'development'
 ));
@@ -52,29 +52,23 @@ Application::forge('demo', array(
  */
 
 // add all modules at ones. This makes them all routable!
-Application::get('demo')
-	->addModulePath(Application::get('demo')->getPath().'modules');
+$app->addModulePath(Application::get('demo')->getPath().'modules');
 
 /*
 // add modules individually, which gives you more control over their definition
-Application::get('demo')
-	->addModule('moda', 'Moda', Application::get('demo')->getPath().'modules'.DS.'moda', true)
-	->addModule('modb', 'Modb', Application::get('demo')->getPath().'modules'.DS.'modb', false);
+$app->addModule('moda', 'Moda', Application::get('demo')->getPath().'modules'.DS.'moda', true)
+    ->addModule('modb', 'Modb', Application::get('demo')->getPath().'modules'.DS.'modb', false);
 */
 
 /**
  * Get the demo application and fire the main request on it
  */
-$response = Application::get('demo')
-	->getRequest()
-	->execute();
+$response = $app->getRequest()->execute();
 
 /**
  * Get the response, and set the response headers out
  */
-$response = $response
-	->getResponse()
-	->sendHeaders();
+$response = $response->getResponse()->sendHeaders();
 
 /**
  * Compile profiling data

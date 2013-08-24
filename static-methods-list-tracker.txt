@@ -411,9 +411,9 @@ Package:
 	[TODO] - public static function loaded($package = null)
 	[TODO] - public static function exists($package)
 
-Pagination:
+Pagination (Class completely rewritten to use views):
 	[TODO] - public static function __callStatic($name, $arguments)
-	[TODO] - public static function forge($name = 'default', $config = array())
+	[2.0 proto] - public static function forge($name = 'default', $config = array())
 	[TODO] - public static function instance($name = null)
 
 Profiler:

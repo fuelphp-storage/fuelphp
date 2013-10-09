@@ -37,7 +37,7 @@ define('VENDORPATH', realpath(__DIR__.'/../vendor/').DIRECTORY_SEPARATOR);
 /**
  * Start the framework
  */
-$autoloader = require VENDORPATH.'autoload.php';
+require VENDORPATH.'autoload.php';
 
 /**
  * Forge the demo application environment...
@@ -51,37 +51,107 @@ $app = Application::forge('demo', array(
  * Define some test modules
  */
 
-// add all modules at ones. This makes them all routable!
+// add all modules at once. This makes them all routable!
 $app->addModulePath(Application::get('demo')->getPath().'modules');
 
 /*
-// add modules individually, which gives you more control over their definition
+// or add modules individually, which gives you more control over their definition
 $app->addModule('moda', 'Moda', Application::get('demo')->getPath().'modules'.DS.'moda', true)
     ->addModule('modb', 'Modb', Application::get('demo')->getPath().'modules'.DS.'modb', false);
 */
 
 /**
- * Get the demo application and fire the main request on it
+ * Get the demo application, fire the main request on it, and get the response
  */
-$response = $app->getRequest()->execute();
+try
+{
+	$response = $app->getRequest()->execute()->getResponse();
+}
+catch (\Fuel\Foundation\Exception\BadRequest $e)
+{
+	// check if a 400 route is defined
+	if ( ! $route = $app->getRouter()->getRoute('400'))
+	{
+		// rethrow the BadRequest exception
+		throw $e;
+	}
+}
+catch (\Fuel\Foundation\Exception\NotAuthorized $e)
+{
+	// check if a 401 route is defined
+	if ( ! $route = $app->getRouter()->getRoute('401'))
+	{
+		// rethrow the NotAuthorized exception
+		throw $e;
+	}
+}
+catch (\Fuel\Foundation\Exception\Forbidden $e)
+{
+	// check if a 403 route is defined
+	if ( ! $route = $app->getRouter()->getRoute('403'))
+	{
+		// rethrow the Forbidden exception
+		throw $e;
+	}
+}
+catch (\Fuel\Foundation\Exception\NotFound $e)
+{
+	// check if a 404 route is defined
+	if ( ! $route = $app->getRouter()->getRoute('404'))
+	{
+		// rethrow the NotFound exception
+		throw $e;
+	}
+}
+catch (\Fuel\Foundation\Exception\ServerError $e)
+{
+	// check if a 500 route is defined
+	if ( ! $route = $app->getRouter()->getRoute('500'))
+	{
+		// rethrow the ServerError exception
+		throw $e;
+	}
+}
+
+// check if a new route is defined
+if (isset($route))
+{
+	// call it
+	$response = $app->getRequest($route->translation)->execute()->getResponse();
+}
 
 /**
- * Get the response, and set the response headers out
+ * send the response headers out
  */
-$response = $response->getResponse()->sendHeaders();
+$response->sendHeaders();
 
 /**
- * Compile profiling data
+ * Output the response body and replace the profiling values. You can remove this
+ * if you don't use it, to speed up the output
  */
-$execTime = round(microtime(true)-FUEL_START_TIME, 5);
-$memUsage = round((memory_get_usage()-FUEL_START_MEM)/1024/1024, 4);
-$memPeakUsage = round((memory_get_peak_usage()-FUEL_START_MEM)/1024/1024, 4);
-
-/**
- * Output the response body and replace the profiling values
- */
-echo str_replace(
-	array('{exec_time}', '{mem_usage}', '{mem_peak_usage}'),
-	array($execTime,     $memUsage,     $memPeakUsage),
-	$response
-);
+if (strpos($response, '{exec_time}') !== false or strpos($response, '{mem_usage}') !== false or strpos($response, '{mem_peak_usage}') !== false)
+{
+	/**
+	 * Compile profiling data, add it to the response, and send it on it's way
+	 */
+	echo str_replace(
+		array(
+			'{exec_time}',
+			'{mem_usage}',
+			'{mem_peak_usage}'
+		),
+		array(
+			round(microtime(true)-FUEL_START_TIME, 4),
+			round((memory_get_usage()-FUEL_START_MEM)/1024/1024, 4),
+			round((memory_get_peak_usage()-FUEL_START_MEM)/1024/1024, 4)
+		),
+		$response
+	);
+}
+else
+{
+	/**
+	 * Just send out the response
+	 */
+	echo $response;
+}

@@ -43,7 +43,7 @@ require VENDORPATH.'autoload.php';
  * Forge the demo application environment...
  */
 $app = Application::forge('demo', array(
-	'namespace' => null,
+	'namespace' => 'Demo',
 	'environment' => isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : 'development'
 ));
 
@@ -124,6 +124,11 @@ if (isset($route))
  * send the response headers out
  */
 $response->sendHeaders();
+
+/**
+ * Render the output
+ */
+$response->setContent((string) $response);
 
 /**
  * Output the response body and replace the profiling values. You can remove this

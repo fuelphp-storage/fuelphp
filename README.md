@@ -22,6 +22,7 @@ For more detailed information, see the [development wiki](https://github.com/fue
 
 * Harro Verton - Project Manager, Developer ([http://wanwizard.eu/](http://wanwizard.eu/))
 * Frank de Jonge - Developer ([http://frenky.net/](http://frenky.net/))
+* Steve West - Developer
 
 ### Want to join?
 

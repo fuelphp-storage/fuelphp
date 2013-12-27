@@ -6,6 +6,7 @@
 
 Legend:
 	[TODO]                                This method has not been looked at
+	[REMOVED]                             This method will not be supported in 2.0
 	[2.0]                                 This method is in 2.0 as-is
 	[2.0 relocated New::call/New->call()] This method is in 2.0, but in a different class/method
 	[2.0 newName]                         This method is in 2.0, but with a new name
@@ -16,6 +17,13 @@ You can combine the last ones, in case they all changed: [2.0 newName helper pro
 --------------------------------------------------------------------------------
 
 Agent:
+
+Implemented in the fuelphp\agent composer package.
+
+[TODO]: At the moment is supports browscap data only. Towards the future, it will
+have to be modified to be driver based, so other sources of browser data can be
+plugged in.
+
 	[2.0 getBrower] - public static function browser()
 	[2.0 getPlatform] - public static function platform()
 	[2.0 getVersion] - public static function version()
@@ -29,6 +37,11 @@ Agent:
 	[2.0 getAcceptCharsets] - public static function charsets()
 
 Arr:
+
+Implemented in the fuelphp\common composer package.
+
+Functionally equivalent to the v1.x Arr class.
+
 	[2.0] - public static function get($array, $key, $default = null)
 	[2.0] - public static function set(&$array, $key, $value = null)
 	[2.0] - public static function pluck($array, $key, $index = null)
@@ -67,6 +80,9 @@ Arr:
 	[2.0 nextByKey] - public static function next_by_key($array, $key, $get_value = false, $strict = false)
 	[2.0 previousByValue] - public static function previous_by_value($array, $value, $get_value = true, $strict = false)
 	[2.0 nextByValue] - public static function next_by_value($array, $value, $get_value = true, $strict = false)
+	[2.0 reIndex] - public static function reIndex($arr)
+	[2.0] - public static function subset(array $array, array $keys, $default = null)
+	[2.0 mergeAssoc] - public static function mergeAssoc()
 
 Asset:
 	[TODO] - public static function instance($instance = null)
@@ -83,14 +99,14 @@ Asset:
 Autoloader:
 	[2.0 proto relocated Composer::add] - public static function add_namespace($namespace, $path, $psr = false)
 	[2.0 proto relocated Composer::addClassMap] - public static function add_namespaces(array $namespaces, $prepend = false)
-	[TODO] - public static function namespace_path($namespace)
-	[TODO] - public static function add_class($class, $path)
-	[TODO] - public static function add_classes($classes)
+	[REMOVED] - public static function namespace_path($namespace)
+	[REMOVED] - public static function add_class($class, $path)
+	[REMOVED] - public static function add_classes($classes)
 	[2.0 proto relocated Alias::alias] - public static function alias_to_namespace($class, $namespace = '')
-	[TODO] - public static function register()
-	[TODO] - public static function add_core_namespace($namespace, $prefix = true)
-	[TODO] - public static function load($class)
-	[TODO] - public static function _reset()
+	[REMOVED] - public static function register()
+	[REMOVED] - public static function add_core_namespace($namespace, $prefix = true)
+	[REMOVED] - public static function load($class)
+	[REMOVED] - public static function _reset()
 
 Cache:
 	[TODO] - public static function forge($identifier, $config = array())

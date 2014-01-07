@@ -123,7 +123,10 @@ if (isset($route))
 /**
  * send the response headers out
  */
-$response->sendHeaders();
+if ( ! Fuel::isCli())
+{
+	$response->sendHeaders();
+}
 
 /**
  * Render the output

@@ -14,7 +14,7 @@
     "require": {
 		"php": ">=5.4",
 		"fuelphp/foundation": "dev-master",
-		"fuelphp/demo-application" : "dev-master"
+		"fuelphp/demo-component" : "dev-master"
     },
     "suggest" : {
     },

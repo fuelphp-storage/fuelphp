@@ -8,9 +8,11 @@
  * @link       http://fuelphp.com
  */
 
+use Fuel\Foundation\Fuel;
+
 /**
  * Set error reporting and display errors settings.
- * You will want to change these when in production.
+ * You may want to change these when in production.
  */
 error_reporting(-1);
 ini_set('display_errors', 1);
@@ -25,52 +27,42 @@ defined('FUEL_START_MEM') or define('FUEL_START_MEM', memory_get_usage());
 define('DOCROOT', __DIR__.DIRECTORY_SEPARATOR);
 
 /**
- * Path to the applications directory.
- */
-define('APPSPATH', realpath(__DIR__.'/../apps/').DIRECTORY_SEPARATOR);
-
-/**
- * Path to the vendor directory.
+ * Path to the vendor directory
  */
 define('VENDORPATH', realpath(__DIR__.'/../vendor/').DIRECTORY_SEPARATOR);
 
 /**
- * Start the framework
+ * Fire up Composer
  */
 require VENDORPATH.'autoload.php';
 
 /**
- * Forge the demo application environment...
+ * Construct this Fuel application, and fetch it's main component
  */
-$app = Application::forge('demo', array(
-	'namespace' => 'Demo',
-	'environment' => isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : 'development'
-));
+$component = Fuel::forge(
+	'Demo Application',                                                 // name to idenfity this application
+	'Demo',                                                             // namespace that defines the main application component
+	isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : 'development'  // default environment for all components
+);
 
 /**
- * Define some test modules
+ * Create some test components that are included in the demo app
+ * (= they are not installed as separate composer packages)
  */
-
-// add all modules at once. This makes them all routable!
-$app->addModulePath(Application::get('demo')->getPath().'modules');
-
-/*
-// or add modules individually, which gives you more control over their definition
-$app->addModule('moda', 'Moda', Application::get('demo')->getPath().'modules'.DS.'moda', true)
-    ->addModule('modb', 'Modb', Application::get('demo')->getPath().'modules'.DS.'modb', false);
-*/
+$component->newComponent('moda', 'Moda', $component->getPath().DS.'modules'.DS.'moda'.DS.'classes', true);
+$component->newComponent('modb', 'Modb', $component->getPath().DS.'modules'.DS.'modb'.DS.'classes', false);
 
 /**
  * Get the demo application, fire the main request on it, and get the response
  */
 try
 {
-	$response = $app->getRequest()->execute()->getResponse();
+	$response = $component->getRequest()->execute()->getResponse();
 }
 catch (\Fuel\Foundation\Exception\BadRequest $e)
 {
 	// check if a 400 route is defined
-	if ( ! $route = $app->getRouter()->getRoute('400'))
+	if ( ! $route = $component->getRouter()->getRoute('400'))
 	{
 		// rethrow the BadRequest exception
 		throw $e;
@@ -79,7 +71,7 @@ catch (\Fuel\Foundation\Exception\BadRequest $e)
 catch (\Fuel\Foundation\Exception\NotAuthorized $e)
 {
 	// check if a 401 route is defined
-	if ( ! $route = $app->getRouter()->getRoute('401'))
+	if ( ! $route = $component->getRouter()->getRoute('401'))
 	{
 		// rethrow the NotAuthorized exception
 		throw $e;
@@ -88,7 +80,7 @@ catch (\Fuel\Foundation\Exception\NotAuthorized $e)
 catch (\Fuel\Foundation\Exception\Forbidden $e)
 {
 	// check if a 403 route is defined
-	if ( ! $route = $app->getRouter()->getRoute('403'))
+	if ( ! $route = $component->getRouter()->getRoute('403'))
 	{
 		// rethrow the Forbidden exception
 		throw $e;
@@ -97,16 +89,17 @@ catch (\Fuel\Foundation\Exception\Forbidden $e)
 catch (\Fuel\Foundation\Exception\NotFound $e)
 {
 	// check if a 404 route is defined
-	if ( ! $route = $app->getRouter()->getRoute('404'))
+	if ( ! $route = $component->getRouter()->getRoute('404'))
 	{
 		// rethrow the NotFound exception
 		throw $e;
 	}
+
 }
 catch (\Fuel\Foundation\Exception\ServerError $e)
 {
 	// check if a 500 route is defined
-	if ( ! $route = $app->getRouter()->getRoute('500'))
+	if ( ! $route = $component->getRouter()->getRoute('500'))
 	{
 		// rethrow the ServerError exception
 		throw $e;
@@ -117,13 +110,13 @@ catch (\Fuel\Foundation\Exception\ServerError $e)
 if (isset($route))
 {
 	// call it
-	$response = $app->getRequest($route->translation)->execute()->getResponse();
+	$response = $component->getRequest($route->translation)->execute()->getResponse();
 }
 
 /**
  * send the response headers out
  */
-if ( ! Fuel::isCli())
+if ( ! $component->getApplication()->getEnvironment()->isCli())
 {
 	$response->sendHeaders();
 }

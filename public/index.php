@@ -4,7 +4,7 @@
  * @version    2.0
  * @author     Fuel Development Team
  * @license    MIT License
- * @copyright  2010 - 2013 Fuel Development Team
+ * @copyright  2010 - 2014 Fuel Development Team
  * @link       http://fuelphp.com
  */
 
@@ -32,12 +32,12 @@ define('DOCROOT', __DIR__.DIRECTORY_SEPARATOR);
 define('VENDORPATH', realpath(__DIR__.'/../vendor/').DIRECTORY_SEPARATOR);
 
 /**
- * Fire up Composer
+ * Fire up the Composer autoloader
  */
 require VENDORPATH.'autoload.php';
 
 /**
- * Construct this Fuel application, and fetch it's main component
+ * Forge the FuelPHP Demo application, and fetch it's main component
  */
 $component = Fuel::forge(
 	'Demo Application',                                                 // name to idenfity this application
@@ -46,12 +46,13 @@ $component = Fuel::forge(
 );
 
 /**
- * add a few test components manually that are included in the demo app, as they
- * are not installed as separate composer packages. for composer based components,
- * only the namespace is enough to identify the component.
+ * Using the main application component, we add a few test components manually
+ * which are included in the demo applications components directory. Since the
+ * are not composer installed, we need to specify the path to them. For composer
+ * installed components, the namespace is enough to identify the component.
  */
-$component->newComponent('moda', 'Moda', $component->getPath().DS.'components'.DS.'moda'.DS.'classes', true);
-$component->newComponent('modb', 'Modb', $component->getPath().DS.'components'.DS.'modb'.DS.'classes', false);
+$component->newComponent('moda', 'Moda', true,  $component->getPath().DS.'components'.DS.'moda'.DS.'classes');
+$component->newComponent('modb', 'Modb', false, $component->getPath().DS.'components'.DS.'modb'.DS.'classes');
 
 /**
  * Get the demo application, fire the main request on it, and get the response

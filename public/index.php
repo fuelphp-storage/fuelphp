@@ -46,11 +46,12 @@ $component = Fuel::forge(
 );
 
 /**
- * Create some test components that are included in the demo app
- * (= they are not installed as separate composer packages)
+ * add a few test components manually that are included in the demo app, as they
+ * are not installed as separate composer packages. for composer based components,
+ * only the namespace is enough to identify the component.
  */
-$component->newComponent('moda', 'Moda', $component->getPath().DS.'modules'.DS.'moda'.DS.'classes', true);
-$component->newComponent('modb', 'Modb', $component->getPath().DS.'modules'.DS.'modb'.DS.'classes', false);
+$component->newComponent('moda', 'Moda', $component->getPath().DS.'components'.DS.'moda'.DS.'classes', true);
+$component->newComponent('modb', 'Modb', $component->getPath().DS.'components'.DS.'modb'.DS.'classes', false);
 
 /**
  * Get the demo application, fire the main request on it, and get the response

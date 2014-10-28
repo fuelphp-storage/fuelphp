@@ -1,6 +1,4 @@
-#FuelPHP
-
-[![Build Status](https://travis-ci.org/fuelphp/fuelphp.png?branch=master)](https://travis-ci.org/fuelphp/fuelphp)
+# FuelPHP
 
 * Version: 2.0
 * [Website](http://fuelphp.com/)
@@ -18,7 +16,7 @@ FuelPHP is a fast, lightweight PHP 5.4 framework. In an age where frameworks are
 
 For more detailed information, see the [development wiki](https://github.com/fuelphp/fuelphp/wiki).
 
-##Development Team
+## Development Team
 
 * Harro Verton - Project Manager, Developer ([http://wanwizard.eu/](http://wanwizard.eu/))
 * Frank de Jonge - Developer ([http://frenky.net/](http://frenky.net/))

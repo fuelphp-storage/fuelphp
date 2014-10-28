@@ -1,23 +1,19 @@
 {
-    "name": "fuelphp/fuelphp",
-    "type": "library",
-    "description": "The FuelPHP framework",
-    "keywords": ["framework"],
-    "homepage": "http://fuelphp.com",
-    "license": "MIT",
-    "authors": [
+	"name": "fuelphp/fuelphp",
+	"description": "The FuelPHP framework",
+	"keywords": ["framework"],
+	"homepage": "http://fuelphp.com",
+	"license": "MIT",
+	"authors": [
 		{
 			"name": "FuelPHP Development Team",
 			"email": "team@fuelphp.com"
 		}
-    ],
-    "require": {
+	],
+	"require": {
 		"php": ">=5.4",
 		"fuelphp/foundation": "dev-master",
-		"fuelphp/demo-component" : "dev-master"
-    },
-    "suggest" : {
-    },
-    "minimum-stability": "dev"
+		"fuelphp/demo-component": "dev-master"
+	},
+	"minimum-stability": "dev"
 }
-

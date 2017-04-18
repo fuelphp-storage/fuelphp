@@ -22,17 +22,17 @@ ini_set('display_errors', 1);
 /**
  * System root
  */
-define('ROOTPATH', __DIR__.DIRECTORY_SEPARATOR.'..');
+define('ROOTPATH', __DIR__ . DIRECTORY_SEPARATOR . '..');
 
 /**
  * Application document root
  */
-define('DOCROOT', __DIR__.DIRECTORY_SEPARATOR);
+define('DOCROOT', __DIR__ . DIRECTORY_SEPARATOR);
 
 /**
  * Path to the vendor directory
  */
-define('VENDORPATH', realpath(__DIR__.'/../vendor/').DIRECTORY_SEPARATOR);
+define('VENDORPATH', realpath(__DIR__ . '/../vendor/') . DIRECTORY_SEPARATOR);
 
 define('DS', DIRECTORY_SEPARATOR);
 
@@ -42,4 +42,7 @@ $app = Application::init([
 	],
 ]);
 
-$app->run();
+$response = $app->run();
+
+http_response_code($response->getStatusCode());
+echo $response->getBody();

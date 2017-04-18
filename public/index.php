@@ -36,6 +36,10 @@ define('VENDORPATH', realpath(__DIR__ . '/../vendor/') . DIRECTORY_SEPARATOR);
 
 define('DS', DIRECTORY_SEPARATOR);
 
+// Get the start time and memory for use later
+$startTime = microtime(true);
+$startMem = memory_get_usage();
+
 $app = Application::init([
 	'components' => [
 		'Fuel\Demo',
@@ -44,5 +48,19 @@ $app = Application::init([
 
 $response = $app->run();
 
+$responseBody = (string) $response->getBody();
+
+if (strpos($responseBody, '{exec_time}') !== false or strpos($responseBody, '{mem_usage}') !== false)
+{
+	$time = microtime(true) - $startTime;
+	$mem = memory_get_usage() - $startMem;
+
+	$responseBody = str_replace(
+		array('{exec_time}', '{mem_usage}'),
+		array(round($time, 4), round($mem / pow(1024, 2), 3)),
+		$responseBody
+	);
+}
+
 http_response_code($response->getStatusCode());
-echo $response->getBody();
+echo $responseBody;
